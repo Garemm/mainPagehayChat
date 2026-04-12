@@ -1,123 +1,130 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Section, { SectionHeader } from './ui/Section'
 import { Check, Zap } from 'lucide-react'
 import Button from './ui/Button'
 
 const plans = [
   {
-    name: 'Básico',
-    tagline: 'Para empezar',
-    monthlyPrice: 499,
-    yearlyPrice: 4990,
-    description: 'Todo lo necesario para que tu negocio empiece a atender clientes con el chatbot.',
+    name: 'Emprendedor',
+    tagline: 'Para empezar con catálogo activo 24/7',
+    monthlyPrice: 199,
+    status: 'Disponible',
+    description: 'Ideal para emprendedores que quieren automatizar atención y mantener su catálogo siempre disponible.',
     features: [
-      '1 negocio registrado',
-      'Chat web en tiempo real',
-      'Motor NLP determinista',
-      'Productos, servicios y horarios',
-      'Contexto multi-turno básico',
-      'Soporte por correo',
+      'Panel SaaS de administración de empresa',
+      'Chatbot híbrido con procesamiento de lenguaje natural (NLP)',
+      'Gestión de hasta 20 productos',
+      'Atención automatizada a clientes 24/7',
     ],
-    cta: 'Empezar gratis',
+    cta: 'Elegir plan',
     ctaVariant: 'secondary',
     highlighted: false,
   },
   {
-    name: 'Pro',
-    tagline: 'Más popular',
-    monthlyPrice: 899,
-    yearlyPrice: 8990,
-    description: 'Potencia total: IA generativa, voz e importación masiva incluidos.',
+    name: 'Lite',
+    tagline: 'Para negocios que inician su presencia digital',
+    monthlyPrice: 399,
+    status: 'Disponible',
+    description: 'Un salto de capacidad para negocios en crecimiento que ya requieren operación de pedidos sincronizada.',
     features: [
-      'Todo lo del plan Básico',
-      'Voz: dictado y lectura (STT + TTS)',
-      'IA generativa con OpenAI (fallback RAG)',
-      'Importación masiva desde Excel',
-      'Contexto multi-turno completo (Redis)',
-      'Historial de conversaciones',
-      'Soporte prioritario',
+      'Todo en Emprendedor',
+      'Gestión de hasta 500 productos',
+      'Sistema de pedidos sincronizado (Chat ↔ Panel administrador)',
+      'Atención automatizada a clientes 24/7',
+      'Soporte por correo electrónico',
     ],
-    cta: 'Empezar gratis',
+    cta: 'Elegir plan',
+    ctaVariant: 'secondary',
+    highlighted: false,
+  },
+  {
+    name: 'Empresarial',
+    tagline: 'Más popular',
+    monthlyPrice: 499,
+    status: 'Disponible',
+    description: 'Para negocios que quieren escalar ventas con analítica y una web personalizada enfocada en conversión.',
+    features: [
+      'Todo en Lite',
+      'Gráficas y análisis del comportamiento de clientes',
+      'Gestión de hasta 2,500 productos',
+      'Sistema de pedidos sincronizado (Chat ↔ Panel administrador)',
+      'Página web personalizada con catálogo digital',
+      'Mejor experiencia de usuario enfocada en conversión',
+    ],
+    cta: 'Elegir plan',
     ctaVariant: 'primary',
     highlighted: true,
   },
   {
-    name: 'Enterprise',
-    tagline: 'Para cadenas y franquicias',
-    monthlyPrice: null,
-    yearlyPrice: null,
-    description: 'Soluciones a medida para múltiples ubicaciones y alto volumen.',
+    name: 'Premium',
+    tagline: 'Solución completa para escalar',
+    monthlyPrice: 799,
+    status: 'En desarrollo',
+    description: 'Plan para empresas que buscan mayor rendimiento, más volumen y automatización avanzada.',
     features: [
-      'Negocios y ubicaciones ilimitadas',
-      'Marca blanca (white-label)',
-      'Entrenamiento de IA personalizado',
-      'Integraciones a medida',
-      'Infraestructura dedicada',
-      'SLA garantizado',
-      'Gerente de éxito dedicado',
+      'Todo en Empresarial',
+      'Chatbot avanzado con inteligencia artificial',
+      'Gestión de hasta 15,000 productos',
+      'Página web integrada con chatbot en tiempo real',
+      'Experiencia optimizada para ventas automatizadas',
+      'Mayor capacidad y rendimiento',
     ],
-    cta: 'Contactar ventas',
+    cta: 'Próximamente',
+    ctaVariant: 'secondary',
+    highlighted: false,
+    disabled: true,
+  },
+  {
+    name: 'Custom',
+    tagline: 'Para necesidades específicas',
+    monthlyPrice: null,
+    status: 'Futuro',
+    description: 'Diseñado para empresas que requieren integraciones o funcionalidades a medida.',
+    features: [
+      'Integración de APIs',
+      'Desarrollo de funcionalidades a medida',
+      'Escalabilidad personalizada',
+      'Soporte dedicado',
+    ],
+    cta: 'Hablar con ventas',
     ctaVariant: 'outline',
     highlighted: false,
   },
 ]
 
 export default function Pricing() {
-  const [yearly, setYearly] = useState(false)
-
   return (
     <Section id="pricing" className="section-separator">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           eyebrow="Precios"
-          headline="Precios simples, sin sorpresas"
-          subheadline="Sin costos ocultos. Cancela cuando quieras. Prueba gratis y migra al plan que más le conviene a tu negocio."
+          headline="Planes mensuales para cada etapa de negocio"
+          subheadline="Precios claros y estructura escalable para lanzar ahora. Puedes empezar en minutos y crecer por capacidad."
         />
 
-        {/* Toggle */}
         <div className="flex justify-center mb-12">
-          <div className="flex items-center gap-4 glass rounded-xl p-1 border border-border/60">
-            <button
-              onClick={() => setYearly(false)}
-              className={`px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                !yearly ? 'bg-surface-3 text-foreground shadow-card' : 'text-foreground-muted hover:text-foreground'
-              }`}
-            >
-              Mensual
-            </button>
-            <button
-              onClick={() => setYearly(true)}
-              className={`px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
-                yearly ? 'bg-surface-3 text-foreground shadow-card' : 'text-foreground-muted hover:text-foreground'
-              }`}
-            >
-              Anual
-              <span className="px-1.5 py-0.5 rounded-md bg-accent/15 text-accent text-[10px] font-bold border border-accent/20">
-                -20%
-              </span>
-            </button>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl glass border border-accent/20 text-sm text-foreground-muted">
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            Precios en MXN / mes
           </div>
         </div>
 
         {/* Plans grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-5 items-start">
           {plans.map((plan, i) => (
-            <PlanCard key={plan.name} plan={plan} yearly={yearly} index={i} />
+            <PlanCard key={plan.name} plan={plan} index={i} />
           ))}
         </div>
 
         <p className="text-center text-xs text-foreground-subtle mt-8">
-          Todos los planes incluyen 14 días de prueba gratuita — sin tarjeta de crédito.
+          Los planes Premium y Custom están en roadmap y se habilitarán por etapas.
         </p>
       </div>
     </Section>
   )
 }
 
-function PlanCard({ plan, yearly, index }) {
-  const price = yearly ? plan.yearlyPrice : plan.monthlyPrice
-
+function PlanCard({ plan, index }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 28 }}
@@ -126,7 +133,7 @@ function PlanCard({ plan, yearly, index }) {
       transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
       whileHover={{ y: plan.highlighted ? -6 : -4 }}
       className={[
-        'relative rounded-2xl p-7 border transition-all duration-300',
+        'relative rounded-2xl p-6 border transition-all duration-300 h-full',
         plan.highlighted
           ? 'bg-surface border-accent/40 shadow-glow'
           : 'bg-surface border-border hover:border-border-subtle',
@@ -137,7 +144,7 @@ function PlanCard({ plan, yearly, index }) {
         <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent text-white text-xs font-bold shadow-glow">
             <Zap className="w-3 h-3 fill-current" />
-            Recommended
+            Recomendado
           </span>
         </div>
       )}
@@ -150,6 +157,16 @@ function PlanCard({ plan, yearly, index }) {
       <div className="relative">
         {/* Plan header */}
         <div className="mb-6">
+          <span
+            className={[
+              'inline-flex items-center text-[11px] rounded-full px-2.5 py-1 mb-3 border',
+              plan.status === 'Disponible'
+                ? 'bg-green-500/10 text-green-300 border-green-500/20'
+                : 'bg-amber-500/10 text-amber-300 border-amber-500/20',
+            ].join(' ')}
+          >
+            {plan.status}
+          </span>
           <p className="text-xs font-semibold text-foreground-muted uppercase tracking-widest mb-1">
             {plan.tagline}
           </p>
@@ -159,37 +176,24 @@ function PlanCard({ plan, yearly, index }) {
 
         {/* Price */}
         <div className="mb-7 pb-7 border-b border-border/60">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={yearly ? 'yearly' : 'monthly'}
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 8 }}
-              transition={{ duration: 0.2 }}
-              className="flex items-end gap-1.5"
-            >
-              {price !== null ? (
-                <>
-                  <span className="text-xs text-foreground-muted self-start mt-2">$</span>
-                  <span className="text-4xl font-bold text-foreground">{price}</span>
-                  <span className="text-foreground-muted text-sm mb-1">/mensual</span>
-                </>
-              ) : (
-                <span className="text-3xl font-bold text-foreground">Custom</span>
-              )}
-            </motion.div>
-          </AnimatePresence>
-          {yearly && price !== null && (
-            <p className="text-xs text-accent mt-1 font-medium">
-              Billed annually — saves ${(getMonthlyPrice(plan.name) - price) * 12}/yr
-            </p>
-          )}
+          <div className="flex items-end gap-1.5">
+            {plan.monthlyPrice !== null ? (
+              <>
+                <span className="text-xs text-foreground-muted self-start mt-2">$</span>
+                <span className="text-4xl font-bold text-foreground">{plan.monthlyPrice}</span>
+                <span className="text-foreground-muted text-sm mb-1">MXN / mes</span>
+              </>
+            ) : (
+              <span className="text-2xl font-bold text-foreground">Precio personalizado</span>
+            )}
+          </div>
         </div>
 
         {/* CTA */}
         <Button
           variant={plan.ctaVariant}
           className={`w-full justify-center mb-7 ${plan.highlighted ? 'shadow-glow hover:shadow-glow-lg' : ''}`}
+          disabled={plan.disabled}
         >
           {plan.cta}
         </Button>
@@ -209,9 +213,4 @@ function PlanCard({ plan, yearly, index }) {
       </div>
     </motion.div>
   )
-}
-
-function getMonthlyPrice(name) {
-  const map = { 'Básico': 29, Pro: 69, Enterprise: null }
-  return map[name]
 }
