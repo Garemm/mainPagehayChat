@@ -89,7 +89,7 @@ export default function CTA() {
 
           {/* Trust footnote */}
           <p className="text-xs text-foreground-subtle">
-            Sin tarjeta de crédito · 14 días de prueba gratis · Cancela cuando quieras
+            Rápido y confiable · Cancela cuando quieras
           </p>
         </motion.div>
       </div>
