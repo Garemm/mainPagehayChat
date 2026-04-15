@@ -26,7 +26,7 @@ const features = [
   {
     icon: Zap,
     title: 'Panel Admin SaaS Incluido',
-    description: 'Cada negocio gestiona sus productos, servicios, promociones y horarios desde un panel web moderno — sin tocar la base de datos. Crea tu cuenta y empieza en minutos.',
+    description: 'Cada negocio gestiona sus productos, servicios, promociones, pedidos y horarios desde un panel web moderno sin tocar la base de datos. Crea tu cuenta y empieza en minutos.',
     accent: '#0ea5e9',
   },
   {
@@ -59,7 +59,7 @@ export default function Features() {
         <SectionHeader
           eyebrow="Plataforma"
           headline="Todo lo que tu negocio necesita"
-          subheadline="Un sistema completo: chatbot inteligente en tiempo real + panel de administración SaaS para gestionar tu catálogo sin esfuerzo."
+          subheadline="Un sistema completo: chatbot inteligente en tiempo real + panel de administración SaaS para gestionar tu catálogo y pedidos sin esfuerzo."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

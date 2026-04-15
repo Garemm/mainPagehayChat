@@ -111,7 +111,7 @@ export default function Demo() {
                 <span className="w-3 h-3 rounded-full bg-red-500/70" />
                 <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
                 <span className="w-3 h-3 rounded-full bg-green-500/70" />
-                <span className="ml-3 text-xs text-foreground-subtle font-mono">chatlocal-ai · vista previa</span>
+                <span className="ml-3 text-xs text-foreground-subtle font-mono">hayChat Business AI · vista previa</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />

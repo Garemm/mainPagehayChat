@@ -28,7 +28,7 @@ export default function Footer() {
                 <NexusIcon />
               </div>
               <span className="font-bold text-base text-foreground">
-                ChatLocal<span className="text-accent">AI</span>
+                hayChat <span className="text-accent">Business</span>
               </span>
             </a>
             <p className="text-sm text-foreground-muted leading-relaxed max-w-xs mb-6">
@@ -76,7 +76,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="py-6 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-foreground-subtle">
-            © {new Date().getFullYear()} ChatLocal AI. Todos los derechos reservados.
+            © {new Date().getFullYear()} hayChat Business AI. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-1 text-xs text-foreground-subtle">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400" />

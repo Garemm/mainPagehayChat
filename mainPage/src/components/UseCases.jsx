@@ -27,7 +27,7 @@ const useCases = [
   {
     icon: Users,
     title: 'Cualquier Negocio Local',
-    description: 'Si tiene un catálogo, horarios o servicios que comunicar, ChatLocal AI puede atender a tus clientes en segundos — sin necesidad de programar nada.',
+    description: 'Si tiene un catálogo, horarios o servicios que comunicar, hayChat Business AI puede atender a tus clientes en segundos — sin necesidad de programar nada.',
     tags: ['Ubicación', 'Catálogo', 'Contacto'],
     accent: '#0ea5e9',
   },

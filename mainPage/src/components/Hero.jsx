@@ -59,11 +59,17 @@ export default function Hero() {
               variants={itemVariants}
               className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] mb-6"
             >
-              <span className="text-gradient-white">Chatbot Inteligente</span>
+              <span className="text-gradient-white">Chatbot</span>
+              <span className="text-gradient-blue"> Inteligente</span>
+              <span className="text-gradient-white"> + </span>
               <br />
+              
+               <span className="text-gradient-white">Panel de control</span>
+                <br/>
               <span className="text-gradient-white">para tu</span>
-              <br />
-              <span className="text-gradient-blue">Negocio Local</span>
+             
+              <span className="text-gradient-blue"> Negocio</span>
+             
             </motion.h1>
 
             {/* Subheadline */}
@@ -71,8 +77,8 @@ export default function Hero() {
               variants={itemVariants}
               className="text-foreground-muted text-lg leading-relaxed mb-10 max-w-lg"
             >
-              Responde preguntas sobre tus productos, horarios, servicios y promociones en tiempo real las 24 horas del día.
-              Motor NLP propio + IA generativa como respaldo — siempre preciso, siempre disponible.
+              Productos, horarios, servicios y promociones! Responde todo al instante las 24 horas del día. Habilita pedidos sincronizado con panel de control, y muestra gráficas con análisis de datos de interacción.
+              Motor NLP propio + IA generativa como respaldo. ¡Siempre preciso, siempre disponible!
             </motion.p>
 
             {/* CTAs */}
@@ -146,8 +152,8 @@ function ChatMockup() {
               <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-green-400 border-2 border-background" />
             </div>
             <div>
-              <p className="text-sm font-semibold text-foreground">ChatLocal AI</p>
-              <p className="text-xs text-accent">En línea · Modo híbrido</p>
+              <p className="text-sm font-semibold text-foreground">tuNegocio · hayChat Business</p>
+              <p className="text-xs text-accent">En línea</p>
             </div>
           </div>
           <div className="flex gap-1.5">
@@ -227,7 +233,7 @@ function ChatMockup() {
       >
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-xs font-medium text-foreground-muted">AI handling 94% of queries</span>
+          <span className="text-xs font-medium text-foreground-muted">Tambien pedidos posibles a través del chat</span>
         </div>
       </motion.div>
 
@@ -239,7 +245,7 @@ function ChatMockup() {
         className="absolute -top-3 -right-3 glass rounded-xl px-3 py-2 border border-accent/20 shadow-glow-sm"
       >
         <div className="flex items-center gap-2">
-          <span className="text-xs font-medium text-foreground">⚡ <span className="text-accent font-bold">3.2s</span> avg response</span>
+          <span className="text-xs font-medium text-foreground">⚡ <span className="text-accent font-bold">2s</span> respuesta promedio</span>
         </div>
       </motion.div>
     </motion.div>

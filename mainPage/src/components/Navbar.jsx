@@ -43,7 +43,7 @@ export default function Navbar() {
               </div>
             </div>
             <span className="font-bold text-base text-foreground tracking-tight">
-              ChatLocal<span className="text-accent">AI</span>
+              hayChat<span className="text-accent"> Businesss</span>
             </span>
           </a>
 
