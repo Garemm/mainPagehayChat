@@ -20,6 +20,17 @@
     overflow-x: hidden;
   }
 
+  /* Preview routes: white theme - only body, not all children */
+  html.preview-mode {
+    background-color: #FFFFFF !important;
+    color: #171717 !important;
+  }
+
+  body.preview-mode {
+    background-color: #FFFFFF !important;
+    color: #171717 !important;
+  }
+
   ::selection {
     background-color: rgba(14, 165, 233, 0.3);
     color: #e6edf3;

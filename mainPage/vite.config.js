@@ -7,5 +7,11 @@ export default defineConfig({
     host: true,
     port: 5172,
     strictPort: true,
+    proxy: {
+      '/admin': {
+        target: 'http://localhost:4000',
+        changeOrigin: true,
+      },
+    },
   },
 })
