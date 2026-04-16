@@ -14,21 +14,10 @@
   }
 
   body {
-    background-color: #080c10;
-    color: #e6edf3;
+    background-color: #FFFFFF;
+    color: #171717;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
-  }
-
-  /* Preview routes: white theme - only body, not all children */
-  html.preview-mode {
-    background-color: #FFFFFF !important;
-    color: #171717 !important;
-  }
-
-  body.preview-mode {
-    background-color: #FFFFFF !important;
-    color: #171717 !important;
   }
 
   ::selection {
