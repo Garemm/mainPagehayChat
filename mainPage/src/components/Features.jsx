@@ -9,37 +9,37 @@ const features = [
     icon: Cpu,
     title: 'NLP Híbrido + IA Generativa',
     description: 'Reglas deterministas primero: más rápido y preciso. Solo cuando ninguna regla aplica, activa OpenAI con contexto RAG filtrado de tu base de datos.',
-    accent: '#0ea5e9',
+    accent: '#2563eb',
   },
   {
     icon: Globe,
     title: 'Voz: STT + TTS Nativo',
     description: 'Dictado por voz y lectura automática de respuestas usando las APIs nativas del navegador. Ningún audio sale del dispositivo — privacidad total.',
-    accent: '#06b6d4',
+    accent: '#3b82f6',
   },
   {
     icon: BookOpen,
     title: 'Contexto Multi-turno con Redis',
     description: 'El chatbot recuerda la conversación completa. "¿y cuánto cuesta?" después de preguntar por un producto funciona perfectamente. Fallback en memoria si Redis no está disponible.',
-    accent: '#0284c7',
+    accent: '#1e40af',
   },
   {
     icon: Zap,
     title: 'Panel Admin SaaS Incluido',
     description: 'Cada negocio gestiona sus productos, servicios, promociones, pedidos y horarios desde un panel web moderno sin tocar la base de datos. Crea tu cuenta y empieza en minutos.',
-    accent: '#0ea5e9',
+    accent: '#2563eb',
   },
   {
     icon: BarChart2,
     title: 'Importación Masiva desde Excel',
     description: 'Carga tu catálogo completo con un solo archivo Excel. Vista previa con validación antes de confirmar. Detecta y sugiere categorías automáticamente.',
-    accent: '#06b6d4',
+    accent: '#0ea5e9',
   },
   {
     icon: Plug,
     title: 'Tiempo Real vía WebSocket',
     description: 'Comunicación instantánea con Socket.io. Indicador de escritura animado, historial de mensajes persistido en Redis y sesión aislada por dispositivo.',
-    accent: '#0284c7',
+    accent: '#1d4ed8',
   },
 ]
 
@@ -59,7 +59,7 @@ export default function Features() {
         <SectionHeader
           eyebrow="Plataforma"
           headline="Todo lo que tu negocio necesita"
-          subheadline="Un sistema completo: chatbot inteligente en tiempo real + panel de administración SaaS para gestionar tu catálogo y pedidos sin esfuerzo."
+          subheadline="Un sistema completo: chatbot inteligente en tiempo real + panel de administración SaaS para gestionar tu catálogo y pedidos sin esfuerzo. Sin necesidad de descargar Apps, todo está a un click al navegador."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -120,7 +120,7 @@ function FeatureCard({ feature, index }) {
       </div>
 
       {/* Content */}
-      <h3 className="text-base font-semibold text-foreground mb-2 group-hover:text-white transition-colors duration-200">
+      <h3 className="text-base font-semibold text-foreground mb-2 group-hover:text-foreground transition-colors duration-200">
         {feature.title}
       </h3>
       <p className="text-sm text-foreground-muted leading-relaxed">

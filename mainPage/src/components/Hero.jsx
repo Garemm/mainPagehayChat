@@ -29,8 +29,8 @@ export default function Hero() {
         <div
           className="absolute inset-0 opacity-[0.025]"
           style={{
-            backgroundImage: `linear-gradient(rgba(14,165,233,0.5) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(14,165,233,0.5) 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(rgba(124,58,237,0.26) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(124,58,237,0.26) 1px, transparent 1px)`,
             backgroundSize: '64px 64px',
           }}
         />
@@ -103,7 +103,7 @@ export default function Hero() {
                   <div
                     key={i}
                     className="w-7 h-7 rounded-full border-2 border-background bg-gradient-to-br flex items-center justify-center text-[10px] font-bold text-white"
-                    style={{ background: `hsl(${200 + i * 15}, 70%, 40%)` }}
+                    style={{ background: `hsl(${266 + i * 10}, 65%, 48%)` }}
                   >
                     {initial}
                   </div>
@@ -141,12 +141,12 @@ function ChatMockup() {
       <div className="absolute -inset-4 rounded-3xl bg-accent/8 blur-2xl pointer-events-none" />
 
       {/* Main card */}
-      <div className="relative glass rounded-2xl border border-border/80 shadow-glow overflow-hidden">
+      <div className="relative chat-shell rounded-2xl border border-border/80 shadow-glow overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-border/60">
           <div className="flex items-center gap-3">
             <div className="relative">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent to-accent-2 flex items-center justify-center text-white text-xs font-bold">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent to-accent-2 flex items-center justify-center text-white text-xs font-bold shadow-glow-sm">
                 C
               </div>
               <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-green-400 border-2 border-background" />
@@ -196,7 +196,7 @@ function ChatMockup() {
             <div className="w-7 h-7 rounded-full bg-gradient-to-br from-accent to-accent-2 flex-shrink-0 flex items-center justify-center text-white text-[10px] font-bold">
               C
             </div>
-            <div className="glass-light rounded-2xl rounded-bl-sm px-4 py-3 border border-border/40">
+            <div className="chat-bubble-ai rounded-2xl rounded-bl-sm px-4 py-3">
               <div className="flex items-center gap-1.5">
                 <span className="typing-dot" />
                 <span className="typing-dot" />
@@ -208,11 +208,11 @@ function ChatMockup() {
 
         {/* Input */}
         <div className="px-5 py-4 border-t border-border/60">
-          <div className="flex items-center gap-3 bg-surface-3 rounded-xl px-4 py-3 border border-border/40">
+          <div className="flex items-center gap-3 chat-panel rounded-xl px-4 py-3">
             <input
               readOnly
               type="text"
-              placeholder="Ask anything..."
+              placeholder="Haz tus preguntas..."
               className="flex-1 bg-transparent text-sm text-foreground-muted placeholder-foreground-subtle outline-none"
             />
             <button className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center flex-shrink-0 shadow-glow-sm hover:shadow-glow transition-shadow">
@@ -262,7 +262,7 @@ function ChatBubble({ from, text, delay }) {
       className={`flex items-end gap-2 ${isUser ? 'flex-row-reverse' : 'flex-row'}`}
     >
       {!isUser && (
-        <div className="w-7 h-7 rounded-full bg-gradient-to-br from-accent to-accent-2 flex-shrink-0 flex items-center justify-center text-white text-[10px] font-bold">
+        <div className="w-7 h-7 rounded-full bg-gradient-to-br from-accent to-accent-2 flex-shrink-0 flex items-center justify-center text-white text-[10px] font-bold shadow-glow-sm">
           N
         </div>
       )}
@@ -270,8 +270,8 @@ function ChatBubble({ from, text, delay }) {
         className={[
           'max-w-[80%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed',
           isUser
-            ? 'bg-accent text-white rounded-br-sm shadow-glow-sm'
-            : 'glass-light text-foreground rounded-bl-sm border border-border/40',
+            ? 'chat-bubble-user rounded-br-sm font-medium'
+            : 'chat-bubble-ai rounded-bl-sm',
         ].join(' ')}
       >
         {text}

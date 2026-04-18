@@ -31,7 +31,7 @@ const plans = [
       'Gestión de hasta 500 productos',
       'Sistema de pedidos sincronizado (Chat ↔ Panel administrador)',
       'Atención automatizada a clientes 24/7',
-      'Soporte por correo electrónico',
+      'Atención prioritaria por correo electrónico',
     ],
     cta: 'Elegir plan',
     ctaVariant: 'secondary',
@@ -204,7 +204,7 @@ function PlanCard({ plan, index }) {
             <li key={feature} className="flex items-start gap-2.5 text-sm">
               <Check
                 className="w-4 h-4 flex-shrink-0 mt-0.5"
-                style={{ color: plan.highlighted ? '#0ea5e9' : '#8b949e' }}
+                style={{ color: plan.highlighted ? '#2563eb' : '#8d87a3' }}
               />
               <span className="text-foreground-muted">{feature}</span>
             </li>

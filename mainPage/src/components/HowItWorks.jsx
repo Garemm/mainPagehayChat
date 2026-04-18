@@ -8,21 +8,21 @@ const steps = [
     icon: UserPlus,
     title: 'Registra tu negocio',
     description: 'Crea tu cuenta en el panel admin y completa el perfil de tu negocio: nombre, teléfono, correo y ubicación. Listo en menos de 5 minutos.',
-    accent: '#0ea5e9',
+    accent: '#2563eb',
   },
   {
     number: '02',
     icon: Database,
     title: 'Carga tu catálogo',
-    description: 'Agrega productos, servicios, horarios y promociones desde el panel — uno a uno o mediante importación masiva desde Excel. Sin tocar código.',
-    accent: '#06b6d4',
+    description: 'Agrega productos, servicios, horarios y promociones desde el panel, uno a uno o mediante importación masiva desde Excel. Sin tocar código.',
+    accent: '#3b82f6',
   },
   {
     number: '03',
     icon: Rocket,
     title: 'Comparte el chat',
     description: 'Comparte el enlace del chatbot con tus clientes o embédalo en tu sitio web. Empiezan a hacer preguntas de inmediato.',
-    accent: '#0284c7',
+    accent: '#1e40af',
   },
 ]
 
@@ -67,7 +67,7 @@ function StepCard({ step, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
       transition={{ duration: 0.55, delay: index * 0.15, ease: 'easeOut' }}
-      className="relative flex flex-col items-center text-center md:items-start md:text-left"
+      className="relative flex flex-col items-center text-center"
     >
       {/* Icon circle */}
       <div className="relative mb-6 z-10">

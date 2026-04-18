@@ -6,30 +6,30 @@ const useCases = [
   {
     icon: TrendingUp,
     title: 'Restaurantes y Cafeterías',
-    description: 'El chatbot responde al instante sobre el menú, precios, ingredientes, horarios y promociones del día — gestionados desde el panel admin.',
+    description: 'El chatbot responde al instante sobre el menú, precios, ingredientes, horarios y promociones del día, gestionados desde el panel admin.',
     tags: ['Menú', 'Horarios', 'Promociones'],
-    accent: '#0ea5e9',
+    accent: '#2563eb',
   },
   {
     icon: Layers,
     title: 'Ferreterías y Tiendas',
     description: 'Consultas de stock, precios por unidad o rollo, disponibilidad de materiales y catálogo completo disponible las 24 hs sin necesidad de llamar.',
     tags: ['Catálogo', 'Precios', 'Stock'],
-    accent: '#06b6d4',
+    accent: '#3b82f6',
   },
   {
     icon: Headphones,
     title: 'Talleres y Servicios',
-    description: 'Informa sobre tipos de servicio, costos estimados, tiempo de entrega y datos de contacto. Ideal para talleres mecánicos, eléctricos o de limpieza.',
+    description: 'Informa sobre tipos de servicio, costos y datos de contacto. Ideal para talleres mecánicos, eléctricos o de limpieza.',
     tags: ['Servicios', 'Cotización', 'Contacto'],
-    accent: '#0284c7',
+    accent: '#1e40af',
   },
   {
     icon: Users,
     title: 'Cualquier Negocio Local',
-    description: 'Si tiene un catálogo, horarios o servicios que comunicar, hayChat Business AI puede atender a tus clientes en segundos — sin necesidad de programar nada.',
+    description: 'Si tiene un catálogo, horarios o servicios que comunicar, hayChat Business puede atender a tus clientes en segundos, sin necesidad de programar nada.',
     tags: ['Ubicación', 'Catálogo', 'Contacto'],
-    accent: '#0ea5e9',
+    accent: '#2563eb',
   },
 ]
 

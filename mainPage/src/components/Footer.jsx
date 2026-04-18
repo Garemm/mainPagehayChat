@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Twitter, Github, Linkedin, MessageSquare } from 'lucide-react'
+import { Instagram, Linkedin } from 'lucide-react'
 
 const footerLinks = {
   Producto: ['Características', 'Demo', 'Precios', 'Cómo funciona'],
@@ -9,10 +9,8 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { icon: Twitter, label: 'Twitter', href: '#' },
-  { icon: Github, label: 'GitHub', href: '#' },
+  { icon: Instagram, label: 'Instagram', href: '#' },
   { icon: Linkedin, label: 'LinkedIn', href: '#' },
-  { icon: MessageSquare, label: 'Discord', href: '#' },
 ]
 
 export default function Footer() {
@@ -76,7 +74,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="py-6 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-foreground-subtle">
-            © {new Date().getFullYear()} hayChat Business AI. Todos los derechos reservados.
+            © {new Date().getFullYear()} hayChat Business. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-1 text-xs text-foreground-subtle">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
@@ -91,12 +89,12 @@ export default function Footer() {
 function NexusIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <circle cx="8" cy="8" r="2" fill="#0ea5e9" />
-      <path d="M8 2L8 5M8 11L8 14M2 8L5 8M11 8L14 8" stroke="#0ea5e9" strokeWidth="1.5" strokeLinecap="round" />
-      <circle cx="8" cy="2" r="1" fill="#38bdf8" opacity="0.6" />
-      <circle cx="8" cy="14" r="1" fill="#38bdf8" opacity="0.6" />
-      <circle cx="2" cy="8" r="1" fill="#38bdf8" opacity="0.6" />
-      <circle cx="14" cy="8" r="1" fill="#38bdf8" opacity="0.6" />
+      <circle cx="8" cy="8" r="2" fill="#2563eb" />
+      <path d="M8 2L8 5M8 11L8 14M2 8L5 8M11 8L14 8" stroke="#2563eb" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="8" cy="2" r="1" fill="#60a5fa" opacity="0.7" />
+      <circle cx="8" cy="14" r="1" fill="#60a5fa" opacity="0.7" />
+      <circle cx="2" cy="8" r="1" fill="#60a5fa" opacity="0.7" />
+      <circle cx="14" cy="8" r="1" fill="#60a5fa" opacity="0.7" />
     </svg>
   )
 }

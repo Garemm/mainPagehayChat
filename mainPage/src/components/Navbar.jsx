@@ -3,10 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Button from './ui/Button'
 
 const navLinks = [
-  { label: 'Features', href: '#features' },
+  { label: 'Características', href: '#features' },
   { label: 'Demo', href: '#demo' },
-  { label: 'How it works', href: '#how-it-works' },
-  { label: 'Pricing', href: '#pricing' },
+  { label: 'Control', href: '#control-center' },
+  { label: 'Funcionamiento', href: '#how-it-works' },
+  { label: 'Precios', href: '#pricing' },
 ]
 
 export default function Navbar() {
@@ -63,13 +64,13 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="http://localhost:5174/" target="_blank" rel="noopener noreferrer"
+              href="http://localhost:4000/panelAdministrador" target="_blank" rel="noopener noreferrer"
               className="text-sm font-medium text-foreground-muted hover:text-foreground transition-colors duration-200"
             >
-              Admin Login
+              Inicia sesión
             </a>
-            <Button variant="primary" size="sm" href="http://localhost:5173/" target="_blank" rel="noopener noreferrer">
-              Start Free(Prueba chat genérico)
+            <Button variant="primary" size="sm" href="http://localhost:3000/chat/1" target="_blank" rel="noopener noreferrer">
+              Prueba chat genérico
             </Button>
           </div>
 
@@ -124,12 +125,12 @@ export default function Navbar() {
 function NexusIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <circle cx="8" cy="8" r="2" fill="#0ea5e9" />
-      <path d="M8 2L8 5M8 11L8 14M2 8L5 8M11 8L14 8" stroke="#0ea5e9" strokeWidth="1.5" strokeLinecap="round" />
-      <circle cx="8" cy="2" r="1" fill="#38bdf8" opacity="0.6" />
-      <circle cx="8" cy="14" r="1" fill="#38bdf8" opacity="0.6" />
-      <circle cx="2" cy="8" r="1" fill="#38bdf8" opacity="0.6" />
-      <circle cx="14" cy="8" r="1" fill="#38bdf8" opacity="0.6" />
+      <circle cx="8" cy="8" r="2" fill="#2563eb" />
+      <path d="M8 2L8 5M8 11L8 14M2 8L5 8M11 8L14 8" stroke="#2563eb" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="8" cy="2" r="1" fill="#60a5fa" opacity="0.7" />
+      <circle cx="8" cy="14" r="1" fill="#60a5fa" opacity="0.7" />
+      <circle cx="2" cy="8" r="1" fill="#60a5fa" opacity="0.7" />
+      <circle cx="14" cy="8" r="1" fill="#60a5fa" opacity="0.7" />
     </svg>
   )
 }

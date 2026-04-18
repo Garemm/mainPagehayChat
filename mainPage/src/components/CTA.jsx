@@ -15,7 +15,7 @@ export default function CTA() {
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, transparent 65%)',
+            background: 'radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, transparent 65%)',
           }}
         />
         <motion.div
@@ -26,7 +26,7 @@ export default function CTA() {
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(6, 182, 212, 0.06) 0%, transparent 65%)',
+            background: 'radial-gradient(circle, rgba(192, 132, 252, 0.08) 0%, transparent 65%)',
           }}
         />
 
@@ -37,7 +37,7 @@ export default function CTA() {
             className="absolute left-0 right-0 h-px"
             style={{
               top: `${p * 100}%`,
-              background: 'linear-gradient(90deg, transparent, rgba(14,165,233,0.1), transparent)',
+              background: 'linear-gradient(90deg, transparent, rgba(124,58,237,0.1), transparent)',
             }}
           />
         ))}
