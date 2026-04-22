@@ -84,7 +84,7 @@ export default function ControlCenter() {
           headline="Lo que el cliente pregunta termina convertido en decisiones"
  subheadline={
     <span>
-      El catálogo del panel alimenta el chat, y el chat genera los pedidos y las gráficas del panel. Sin duplicar datos y sin perder contexto.
+      El catálogo del panel alimenta el chat, y el chat responde a clientes, genera pedidos y actualiza gráficas del panel. Sin duplicar datos, sin perder contexto.
       <br />
       ¡El cliente accede fácilmente al chat por link o QR!
     </span>

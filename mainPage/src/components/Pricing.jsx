@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
+import { useRef, useState, useEffect } from 'react'
 import Section, { SectionHeader } from './ui/Section'
-import { Check, Zap } from 'lucide-react'
+import { Check, Zap, ChevronLeft, ChevronRight } from 'lucide-react'
 import Button from './ui/Button'
 
 const plans = [
@@ -31,7 +32,7 @@ const plans = [
       'Gestión de hasta 500 productos',
       'Sistema de pedidos sincronizado (Chat ↔ Panel administrador)',
       'Atención automatizada a clientes 24/7',
-      'Atención prioritaria por correo electrónico',
+      'Atención por correo electrónico',
     ],
     cta: 'Elegir plan',
     ctaVariant: 'secondary',
@@ -48,8 +49,9 @@ const plans = [
       'Gráficas y análisis del comportamiento de clientes',
       'Gestión de hasta 2,500 productos',
       'Sistema de pedidos sincronizado (Chat ↔ Panel administrador)',
-      'Página web personalizada con catálogo digital',
       'Mejor experiencia de usuario enfocada en conversión',
+      'Soporte prioritario por correo electrónico',
+      'Próximamente: Página web personalizada con catálogo digital',
     ],
     cta: 'Elegir plan',
     ctaVariant: 'primary',
@@ -93,6 +95,51 @@ const plans = [
 ]
 
 export default function Pricing() {
+  const carouselRef = useRef(null)
+  const [canPrev, setCanPrev] = useState(false)
+  const [canNext, setCanNext] = useState(true)
+
+  useEffect(() => {
+    const el = carouselRef.current
+    if (!el) return
+    const onScroll = () => {
+      setCanPrev(el.scrollLeft > 10)
+      setCanNext(el.scrollLeft + el.clientWidth < el.scrollWidth - 10)
+    }
+    el.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => el.removeEventListener('scroll', onScroll)
+  }, [])
+
+  function scrollByDir(dir = 1) {
+    const el = carouselRef.current
+    if (!el) return
+    const card = el.querySelector('.snap-start')
+    const cardWidth = card ? card.clientWidth + parseInt(getComputedStyle(card).marginRight || '16') : 360
+    el.scrollBy({ left: dir * cardWidth, behavior: 'smooth' })
+  }
+
+  function CarouselControls() {
+    return (
+      <div className="flex items-center gap-2">
+        <button
+          onClick={() => scrollByDir(-1)}
+          disabled={!canPrev}
+          className={`p-2 rounded-lg bg-surface border border-border/60 ${canPrev ? 'hover:bg-surface-2' : 'opacity-40 cursor-not-allowed'}`}
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+        <button
+          onClick={() => scrollByDir(1)}
+          disabled={!canNext}
+          className={`p-2 rounded-lg bg-surface border border-border/60 ${canNext ? 'hover:bg-surface-2' : 'opacity-40 cursor-not-allowed'}`}
+        >
+          <ChevronRight className="w-4 h-4" />
+        </button>
+      </div>
+    )
+  }
+
   return (
     <Section id="pricing" className="section-separator">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -109,11 +156,26 @@ export default function Pricing() {
           </div>
         </div>
 
-        {/* Plans grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-5 items-start">
-          {plans.map((plan, i) => (
-            <PlanCard key={plan.name} plan={plan} index={i} />
-          ))}
+        {/* Plans carousel */}
+        <div className="relative">
+          <div className="hidden md:flex justify-end mb-4">
+            <CarouselControls />
+          </div>
+          <div
+              ref={carouselRef}
+              className="carousel-container overflow-x-auto scroll-smooth snap-x snap-mandatory flex items-start gap-5 py-2 px-4 md:px-1"
+              style={{ WebkitOverflowScrolling: 'touch', scrollPadding: '1rem', touchAction: 'pan-x' }}
+              id="plans-carousel"
+            >
+              {plans.map((plan, i) => (
+                <div
+                  key={plan.name}
+                  className="snap-center md:snap-start flex-shrink-0 w-[min(92vw,320px)] md:w-[360px] lg:w-[420px] h-full"
+                >
+                  <PlanCard plan={plan} index={i} />
+                </div>
+              ))}
+            </div>
         </div>
 
         <p className="text-center text-xs text-foreground-subtle mt-8">
@@ -131,12 +193,12 @@ function PlanCard({ plan, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
-      whileHover={{ y: plan.highlighted ? -6 : -4 }}
+      whileHover={{ y: plan.highlighted ? -8 : -6 }}
       className={[
-        'relative rounded-2xl p-6 border transition-all duration-300 h-full',
+        'relative rounded-2xl p-6 border-2 transition-all duration-300 h-full transform-gpu',
         plan.highlighted
-          ? 'bg-surface border-accent/40 shadow-glow'
-          : 'bg-surface border-border hover:border-border-subtle',
+          ? 'bg-surface border-accent/60 shadow-glow-lg -translate-y-1.5'
+          : 'bg-surface border-border/90 hover:shadow-md',
       ].join(' ')}
     >
       {/* Recommended badge */}
@@ -149,7 +211,6 @@ function PlanCard({ plan, index }) {
         </div>
       )}
 
-      {/* Tinted background for highlighted */}
       {plan.highlighted && (
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-accent/5 to-transparent pointer-events-none" />
       )}

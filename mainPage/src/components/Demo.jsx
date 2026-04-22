@@ -61,6 +61,8 @@ export default function Demo() {
   const [started, setStarted] = useState(false)
   const [orderFlow, setOrderFlow] = useState(initialOrderFlow)
   const bottomRef = useRef(null)
+  const messagesRef = useRef(null)
+  const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
 
   useEffect(() => {
     if (!started) return
@@ -118,10 +120,14 @@ export default function Demo() {
   }, [started])
 
   useEffect(() => {
-    if (bottomRef.current) {
-      bottomRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    // Only auto-scroll the internal messages container when autoScrollEnabled is true.
+    const el = messagesRef.current
+    if (!el) return
+
+    if (autoScrollEnabled) {
+      el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' })
     }
-  }, [visibleMessages, typing, orderFlow])
+  }, [visibleMessages, typing, orderFlow, autoScrollEnabled])
 
   const handleRestart = () => {
     setStarted(false)
@@ -149,7 +155,7 @@ export default function Demo() {
           <div className="absolute -inset-4 rounded-3xl bg-accent/5 blur-2xl pointer-events-none" />
 
           {/* Chat side */}
-          <div className="relative chat-shell rounded-2xl border border-border/80 shadow-glow overflow-hidden">
+          <div className="relative chat-shell rounded-2xl border-2 border-border/90 shadow-glow overflow-hidden">
             {/* Titlebar */}
             <div className="flex items-center justify-between px-5 py-3.5 border-b border-border/60 bg-white/80">
               <div className="flex items-center gap-2">
@@ -165,7 +171,15 @@ export default function Demo() {
             </div>
 
             {/* Messages area */}
-            <div className="h-[420px] overflow-y-auto px-5 py-5 flex flex-col gap-4 scroll-smooth"
+            <div
+              ref={messagesRef}
+              onScroll={() => {
+                const el = messagesRef.current
+                if (!el) return
+                const nearBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 40
+                setAutoScrollEnabled(nearBottom)
+              }}
+              className="h-[420px] overflow-y-auto px-5 py-5 flex flex-col gap-4 scroll-smooth"
               style={{ scrollbarWidth: 'thin', scrollbarColor: '#cdbfe9 transparent' }}
             >
               <AnimatePresence mode="popLayout">

@@ -62,6 +62,50 @@
   }
 }
 
+/* Dark theme overrides when `html` has class `dark` */
+@layer base {
+  html.dark {
+    background: #060616;
+    color-scheme: dark;
+  }
+
+  html.dark body {
+    background: linear-gradient(180deg, #05060a 0%, #0b0f1a 48%, #070614 100%);
+    color: #e6e6f0;
+  }
+
+  html.dark #root { background: linear-gradient(180deg, #05060a 0%, #0b0f1a 48%, #070614 100%); }
+
+  html.dark ::selection { background-color: rgba(99,102,241,0.18); color: #e6e6f0; }
+
+  /* Component overrides */
+  html.dark .glass { background: rgba(10,12,20,0.6); border: 1px solid rgba(40,44,64,0.6); box-shadow: 0 18px 40px rgba(0,0,0,0.6); }
+  html.dark .chat-shell { background: rgba(6,8,16,0.75); border: 1px solid rgba(40,44,64,0.7); box-shadow: 0 22px 54px rgba(0,0,0,0.6); }
+  html.dark .chat-panel { background: rgba(8,10,18,0.6); border: 1px solid rgba(40,44,64,0.6); }
+  html.dark .chat-bubble-ai { background: rgba(20,22,32,0.9); color: #e6e6f0; border: 1px solid rgba(40,44,64,0.7); }
+
+  /* Utility overrides for readable text */
+  html.dark .text-foreground { color: #e6e6f0 !important; }
+  html.dark .text-foreground-muted { color: #c7c8d9 !important; }
+  html.dark .text-foreground-subtle { color: #9ea6b8 !important; }
+  html.dark .bg-background { background-color: #070814 !important; }
+  html.dark .bg-surface, html.dark .bg-surface-2, html.dark .bg-surface-3 { background-color: rgba(10,12,20,0.6) !important; }
+  html.dark .border-border { border-color: rgba(40,44,64,0.65) !important; }
+
+  /* Features cards: keep them light but text black for contrast */
+  html.dark #features .group { background: rgba(255,255,255,0.96) !important; color: #000 !important; }
+  html.dark #features .group .text-foreground { color: #000 !important; }
+  html.dark #features .group .text-foreground-muted { color: #222 !important; }
+
+  /* Make gradient-white headings lighter in dark mode for better contrast */
+  html.dark .text-gradient-white {
+    background: linear-gradient(180deg, #f3f4f6 0%, #e6e6f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
 @layer utilities {
   .text-gradient {
     background: linear-gradient(135deg, #19162a 0%, #5f5877 100%);

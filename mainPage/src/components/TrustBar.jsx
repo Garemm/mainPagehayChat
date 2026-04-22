@@ -51,9 +51,9 @@ export default function TrustBar() {
           {/* Stats strip */}
           <div className="w-full mt-4 pt-8 border-t border-border/40 grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { value: '< 2s', label: 'Tiempo de respuesta promedio' },
-              { value: '1600', label: 'Tests automatizados pasando' },
-              { value: '100%', label: 'Privacidad de voz — sin audio externo' },
+              { value: '0.5s', label: 'Tiempo de respuesta promedio' },
+              { value: '2 modos', label: 'Escribiendo mensajes o grabando audio' },
+              { value: '100%', label: 'Privacidad de voz, sin audio externo' },
               { value: '24/7', label: 'Disponibilidad del chatbot' },
             ].map((stat, i) => (
               <motion.div

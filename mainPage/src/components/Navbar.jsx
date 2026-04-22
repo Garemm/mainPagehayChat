@@ -13,12 +13,34 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [theme, setTheme] = useState('light')
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handler, { passive: true })
     return () => window.removeEventListener('scroll', handler)
   }, [])
+
+  useEffect(() => {
+    // initialize theme from localStorage; default to light (do not auto-switch to system dark)
+    try {
+      const saved = localStorage.getItem('theme')
+      if (saved) {
+        setTheme(saved)
+        document.documentElement.classList.toggle('dark', saved === 'dark')
+      } else {
+        setTheme('light')
+        document.documentElement.classList.remove('dark')
+      }
+    } catch (e) {}
+  }, [])
+
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark'
+    setTheme(next)
+    try { localStorage.setItem('theme', next) } catch (e) {}
+    document.documentElement.classList.toggle('dark', next === 'dark')
+  }
 
   return (
     <motion.header
@@ -36,16 +58,13 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 group">
-            <div className="relative w-8 h-8">
-              <div className="absolute inset-0 rounded-lg bg-accent opacity-20 group-hover:opacity-40 transition-opacity duration-200 blur-sm" />
-              <div className="relative w-8 h-8 rounded-lg border border-accent/40 bg-accent/10 flex items-center justify-center">
-                <NexusIcon />
-              </div>
-            </div>
-            <span className="font-bold text-base text-foreground tracking-tight">
-              hayChat<span className="text-accent"> Businesss</span>
-            </span>
+          <a href="/" className="flex items-center group">
+            <img
+              src="/hayChat.jpeg"
+              alt="hayChat Business"
+              title="hayChat Business"
+              className="h-14 sm:h-16 object-contain rounded-md"
+            />
           </a>
 
           {/* Desktop nav */}
@@ -61,15 +80,51 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* CTA */}
+          {/* CTA + theme toggle */}
           <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={toggleTheme}
+              aria-pressed={theme === 'dark'}
+              aria-label="Alternar tema claro/oscuro"
+              title={`Tema: ${theme === 'dark' ? 'Oscuro' : 'Claro'}`}
+              className="relative w-14 h-8 rounded-full transition-colors focus:outline-none"
+            >
+              <span className={`absolute inset-0 rounded-full transition-colors ${theme === 'dark' ? 'bg-indigo-600' : 'bg-surface-2'}`} />
+
+              <span className={`absolute left-2 top-1.5 transition-opacity z-10 pointer-events-none text-yellow-400 ${theme === 'dark' ? 'opacity-40' : 'opacity-100'}`} aria-hidden>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="drop-shadow-md">
+                  <g fill="currentColor">
+                    <circle cx="12" cy="12" r="4.2" />
+                  </g>
+                  <g stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
+                    <line x1="12" y1="1.5" x2="12" y2="4.5" />
+                    <line x1="12" y1="19.5" x2="12" y2="22.5" />
+                    <line x1="1.5" y1="12" x2="4.5" y2="12" />
+                    <line x1="19.5" y1="12" x2="22.5" y2="12" />
+                    <line x1="4.2" y1="4.2" x2="6.2" y2="6.2" />
+                    <line x1="17.8" y1="17.8" x2="19.8" y2="19.8" />
+                    <line x1="4.2" y1="19.8" x2="6.2" y2="17.8" />
+                    <line x1="17.8" y1="6.2" x2="19.8" y2="4.2" />
+                  </g>
+                </svg>
+              </span>
+
+              <span className={`absolute right-2 top-1.5 transition-opacity z-10 pointer-events-none ${theme === 'dark' ? 'opacity-100' : 'opacity-40'} text-yellow-600`} aria-hidden>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"/></svg>
+              </span>
+
+              <span
+                className={`absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow transform transition-transform z-20 ${theme === 'dark' ? 'translate-x-6' : 'translate-x-0'}`}
+              />
+            </button>
+
             <a
-              href="http://localhost:4000/panelAdministrador" target="_blank" rel="noopener noreferrer"
+              href="/panelAdministrador/" target="_blank" rel="noopener noreferrer"
               className="text-sm font-medium text-foreground-muted hover:text-foreground transition-colors duration-200"
             >
               Inicia sesión
             </a>
-            <Button variant="primary" size="sm" href="http://localhost:3000/chat/1" target="_blank" rel="noopener noreferrer">
+            <Button variant="primary" size="sm" href="/chat/1" target="_blank" rel="noopener noreferrer">
               Prueba chat genérico
             </Button>
           </div>
@@ -110,9 +165,38 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <div className="pt-3 mt-2 border-t border-border flex flex-col gap-2">
-                <Button variant="secondary" className="w-full justify-center">Sign in</Button>
-                <Button variant="primary" className="w-full justify-center">Start Building</Button>
+              {/* mobile theme toggle */}
+              <div className="mt-2 px-4">
+                <div className="w-full flex items-center justify-center gap-2 px-3 py-2">
+                  <button
+                    onClick={() => { toggleTheme(); setMobileOpen(false) }}
+                    aria-pressed={theme === 'dark'}
+                    className="relative w-14 h-8 rounded-full transition-colors focus:outline-none"
+                  >
+                    <span className={`absolute inset-0 rounded-full transition-colors ${theme === 'dark' ? 'bg-indigo-600' : 'bg-surface-2'}`} />
+                    <span className={`absolute left-2 top-1.5 transition-opacity text-yellow-400 ${theme === 'dark' ? 'opacity-40' : 'opacity-100'}`} aria-hidden>
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="drop-shadow-md">
+                        <g fill="currentColor">
+                          <circle cx="12" cy="12" r="4.2" />
+                        </g>
+                        <g stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
+                          <line x1="12" y1="1.5" x2="12" y2="4.5" />
+                          <line x1="12" y1="19.5" x2="12" y2="22.5" />
+                          <line x1="1.5" y1="12" x2="4.5" y2="12" />
+                          <line x1="19.5" y1="12" x2="22.5" y2="12" />
+                          <line x1="4.2" y1="4.2" x2="6.2" y2="6.2" />
+                          <line x1="17.8" y1="17.8" x2="19.8" y2="19.8" />
+                          <line x1="4.2" y1="19.8" x2="6.2" y2="17.8" />
+                          <line x1="17.8" y1="6.2" x2="19.8" y2="4.2" />
+                        </g>
+                      </svg>
+                    </span>
+                    <span className={`absolute right-2 top-1.5 transition-opacity ${theme === 'dark' ? 'opacity-100' : 'opacity-40'} text-yellow-600`} aria-hidden>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" fill="currentColor"/></svg>
+                    </span>
+                    <span className={`absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow transform transition-transform ${theme === 'dark' ? 'translate-x-6' : 'translate-x-0'}`} />
+                  </button>
+                </div>
               </div>
             </div>
           </motion.div>

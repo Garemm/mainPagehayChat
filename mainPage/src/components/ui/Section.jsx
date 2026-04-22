@@ -10,8 +10,9 @@ export default function Section({ children, id, className = '', tight = false })
     <section
       id={id}
       className={[
-        'relative w-full',
+        'relative w-full border-t border-b border-border/60',
         tight ? 'py-16 md:py-20' : 'py-24 md:py-32',
+        'backdrop-blur-sm bg-background/3',
         className,
       ].join(' ')}
     >

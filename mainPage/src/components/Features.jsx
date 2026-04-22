@@ -8,19 +8,19 @@ const features = [
   {
     icon: Cpu,
     title: 'NLP Híbrido + IA Generativa',
-    description: 'Reglas deterministas primero: más rápido y preciso. Solo cuando ninguna regla aplica, activa OpenAI con contexto RAG filtrado de tu base de datos.',
+    description: 'Reglas deterministas primero: más rápido y preciso. Solo cuando ninguna regla aplica, activa IA con contexto RAG filtrado de tu base de datos.',
     accent: '#2563eb',
   },
   {
     icon: Globe,
     title: 'Voz: STT + TTS Nativo',
-    description: 'Dictado por voz y lectura automática de respuestas usando las APIs nativas del navegador. Ningún audio sale del dispositivo — privacidad total.',
+    description: 'Dictado por voz y lectura automática de respuestas usando las APIs nativas del navegador. Ningún audio sale del dispositivo, privacidad total.',
     accent: '#3b82f6',
   },
   {
     icon: BookOpen,
-    title: 'Contexto Multi-turno con Redis',
-    description: 'El chatbot recuerda la conversación completa. "¿y cuánto cuesta?" después de preguntar por un producto funciona perfectamente. Fallback en memoria si Redis no está disponible.',
+    title: 'Contexto Multi-turno',
+    description: 'El chatbot sigue el contexto de la conversación. "¿y cuánto cuesta?" después de preguntar por un producto funciona perfectamente.',
     accent: '#1e40af',
   },
   {
@@ -38,7 +38,7 @@ const features = [
   {
     icon: Plug,
     title: 'Tiempo Real vía WebSocket',
-    description: 'Comunicación instantánea con Socket.io. Indicador de escritura animado, historial de mensajes persistido en Redis y sesión aislada por dispositivo.',
+    description: 'Comunicación instantánea con Socket.io. Indicador de escritura animado, historial de mensajes persistido hasta por 6 horas y sesión aislada por dispositivo.',
     accent: '#1d4ed8',
   },
 ]
@@ -59,7 +59,7 @@ export default function Features() {
         <SectionHeader
           eyebrow="Plataforma"
           headline="Todo lo que tu negocio necesita"
-          subheadline="Un sistema completo: chatbot inteligente en tiempo real + panel de administración SaaS para gestionar tu catálogo y pedidos sin esfuerzo. Sin necesidad de descargar Apps, todo está a un click al navegador."
+          subheadline="Un sistema completo: chatbot inteligente en tiempo real + panel de administración SaaS para gestionar tu catálogo, stock y pedidos sin esfuerzo. Sin necesidad de descargar Apps, todo está a un click al navegador."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -82,9 +82,9 @@ function FeatureCard({ feature, index }) {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={cardVariants}
-      whileHover={{ y: -5, scale: 1.005 }}
-      className="group relative rounded-2xl p-6 bg-surface border border-border cursor-default
-                 hover:border-accent/30 transition-all duration-300 overflow-hidden"
+      whileHover={{ y: -6, scale: 1.01 }}
+      className="group relative rounded-2xl p-6 bg-background/70 backdrop-blur-sm border border-border/80 shadow-lg cursor-default hover:shadow-2xl hover:border-accent transition-all duration-300 overflow-hidden"
+      style={{ zIndex: 1 }}
     >
       {/* Hover glow */}
       <div
@@ -110,8 +110,8 @@ function FeatureCard({ feature, index }) {
       {/* Icon */}
       <div
         className="relative w-11 h-11 rounded-xl flex items-center justify-center mb-5
-                   border border-border group-hover:border-accent/30 transition-colors duration-300"
-        style={{ background: `${feature.accent}10` }}
+                   border-2 border-border/80 group-hover:border-accent/30 transition-colors duration-300 shadow-sm"
+        style={{ background: `${feature.accent}18` }}
       >
         <Icon
           className="w-5 h-5 transition-colors duration-300"
@@ -129,7 +129,7 @@ function FeatureCard({ feature, index }) {
 
       {/* Bottom accent line */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        className="absolute bottom-0 left-0 right-0 h-px opacity-30 group-hover:opacity-100 transition-opacity duration-300"
         style={{ background: `linear-gradient(90deg, transparent, ${feature.accent}60, transparent)` }}
       />
     </motion.div>

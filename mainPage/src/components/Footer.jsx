@@ -59,7 +59,7 @@ export default function Footer() {
                 {links.map((link) => (
                   <li key={link}>
                     <a
-                      href="#"
+                      href={link === 'Contacto' ? 'mailto:soporte@haychatbusiness.com' : '#'}
                       className="text-sm text-foreground-muted hover:text-foreground transition-colors duration-200"
                     >
                       {link}
@@ -78,7 +78,7 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-1 text-xs text-foreground-subtle">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
-            <span>All systems operational</span>
+            <span>En constante innovación</span>
           </div>
         </div>
       </div>

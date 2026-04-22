@@ -63,8 +63,8 @@ function UseCaseCard({ useCase, index }) {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
       whileHover={{ y: -4 }}
-      className="group relative rounded-2xl p-7 bg-surface border border-border
-                 hover:border-accent/25 transition-all duration-300 overflow-hidden"
+      className="group relative rounded-2xl p-7 bg-surface border-2 border-border/90
+             hover:border-accent/25 transition-all duration-300 overflow-hidden"
     >
       {/* Background tint on hover */}
       <div
@@ -76,7 +76,7 @@ function UseCaseCard({ useCase, index }) {
         {/* Icon + title row */}
         <div className="flex items-start gap-4">
           <div
-            className="w-12 h-12 rounded-xl flex items-center justify-center border border-border group-hover:border-opacity-50 transition-all duration-300 flex-shrink-0"
+            className="w-12 h-12 rounded-xl flex items-center justify-center border-2 border-border/80 group-hover:border-opacity-50 transition-all duration-300 flex-shrink-0"
             style={{ background: `${useCase.accent}12`, borderColor: `${useCase.accent}30` }}
           >
             <Icon className="w-5 h-5" style={{ color: useCase.accent }} />
